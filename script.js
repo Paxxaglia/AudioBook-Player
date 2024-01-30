@@ -1,8 +1,11 @@
 const botaoPlayPause = document.getElementById('play-pause');
 const audioCapitulo = document.getElementById('audio-capitulo');
+const nomeCapitulo  = document.getElementById('capitulo');
+
 
 const numeroCapitulos = 10;
 let taTocando = 0;
+let capituloAtual = 1;
 
 function tocarFaixa() {
     audioCapitulo.play();
@@ -24,4 +27,38 @@ function tocarOuPausar() {
     } else {
         pausarFaixa();
     }
+}
+
+function proximaFaixa() {
+    if (capituloAtual == numeroCapitulos) {
+        capituloAtual = 1;
+    } else {
+        capituloAtual = capituloAtual + 1;
+        
+    }
+
+    audioCapitulo.src = './books/dom-casmurro/' + capituloAtual + '.mp3';
+    tocarFaixa();
+    
+    taTocando = 1;
+    trocarNomeFaixa();
+}
+
+function faixaAnterior() {
+    if (capituloAtual == 1) {
+        capituloAtual = 10;
+    } else {
+        capituloAtual = capituloAtual - 1;
+    }
+
+
+    
+    audioCapitulo.src = './books/dom-casmurro/' + capituloAtual + '.mp3';
+    tocarFaixa();
+    taTocando = 1;
+    trocarNomeFaixa();
+}
+
+function trocarNomeFaixa(){
+    nomeCapitulo.innerText = 'Capitulo ' + capituloAtual;
 }
