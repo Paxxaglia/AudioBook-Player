@@ -7,20 +7,21 @@ let taTocando = 0;
 function tocarFaixa() {
     audioCapitulo.play();
     this.taTocando = 1;
+    botaoPlayPause.classList.remove('bi-play-circle-fill');
+    botaoPlayPause.classList.add('bi-pause-circle-fill');
 }
 
 function pausarFaixa() {
-
-        audioCapitulo.pause();
-        this.taTocando = 0;
-
+    audioCapitulo.pause();
+    this.taTocando = 0;
+    botaoPlayPause.classList.remove('bi-pause-circle-fill');
+    botaoPlayPause.classList.add('bi-play-circle-fill');
 }
 
-function tocarOuPausar(){
-    if(this.taTocando == 0){
+function tocarOuPausar() {
+    if (this.taTocando == 0) {
         tocarFaixa();
-    }else{
+    } else {
         pausarFaixa();
     }
 }
-
